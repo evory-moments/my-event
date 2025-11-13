@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Encuentra tu Mesa - XV Años</title>
+
+<!-- Fuente general y cursiva -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --negro: #1f1f1f;
+    --verde-esmeralda: #009d71;
+  }
+
+  html, body {
+    height: auto;
+    overflow: hidden;
+  }
+
+  body {
+    font-family: "Poppins", sans-serif;
+    background-color: #ffffff;
+    color: var(--negro);
+    text-align: center;
+    padding: 10px 20px;
+    margin: 0;
+    scroll-behavior: smooth;
+  }
+
+  h1 {
+    color: var(--verde-esmeralda);
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  h1 img.icono-mariposa {
+    width: 26px;
+    height: 26px;
+    vertical-align: middle;
+  }
+
+  p {
+    font-size: 1em;
+    color: var(--negro);
+    margin-bottom: 15px;
+    line-height: 1.5em;
+  }
+
+  .nombre-quinceanera {
+    font-size: 1.8em;
+    color: var(--verde-esmeralda);
+    font-family: "Great Vibes", cursive;
+    font-weight: 400;
+    margin: 10px 0 20px 0;
+  }
+
+  input {
+    padding: 10px;
+    width: 100%;
+    max-width: 320px;
+    border: 2px solid var(--verde-esmeralda);
+    border-radius: 8px;
+    font-size: 1em;
+    outline: none;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  input:focus {
+    box-shadow: 0 0 6px var(--verde-esmeralda);
+    border-color: var(--verde-esmeralda);
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: var(--verde-esmeralda);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #007a56;
+  }
+
+  #sugerencias {
+    margin: 12px auto;
+    max-width: 320px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    z-index: 10;
+    transition: all 0.3s ease;
+  }
+
+  .opcion {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+    transition: background 0.3s ease;
+    font-size: 1em;
+  }
+
+  .opcion:hover {
+    background: #d0f0e6;
+  }
+
+  #resultado {
+    margin-top: 20px;
+    min-height: 260px;
+    text-align: center;
+  }
+
+  /* Imagen por defecto */
+  #imagen-defecto {
+    width: 260px;
+    opacity: 0.9;
+    margin-top: 10px;
+  }
+
+  .tarjeta-mesa {
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    padding: 25px 15px;
+    width: 250px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tarjeta-mesa::before,
+  .tarjeta-mesa::after {
+    content: "";
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    background-image: url('https://i.postimg.cc/vmkyZHKc/pngtree-a-black-butterfly-silhouette-png-image-14849347.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+  }
+
+  .tarjeta-mesa::before { top: 8px; left: 8px; }
+  .tarjeta-mesa::after { bottom: 8px; right: 8px; }
+
+  .tarjeta-mesa h2 {
+    letter-spacing: 3px;
+    font-size: 0.9em;
+    color: var(--verde-esmeralda);
+    margin: 0;
+  }
+
+  .tarjeta-mesa .numero {
+    font-size: 4.2em;
+    color: var(--verde-esmeralda);
+    font-weight: bold;
+    margin: 8px 0;
+  }
+
+  .tarjeta-mesa .mensaje {
+    font-size: 0.9em;
+    color: var(--negro);
+    line-height: 1.3em;
+    margin-top: 4px;
+  }
+
+  .tarjeta-mesa .mensaje i {
+    font-family: "Great Vibes", cursive;
+    font-style: normal;
+    color: var(--verde-esmeralda);
+    font-size: 1.5em;
+  }
+
+  .tarjeta-mesa .fecha {
+    margin-top: 6px;
+    font-size: 0.75em;
+    color: #555;
+  }
+
+  #footer {
+    margin-top: 10px;
+    font-size: 0.85em;
+    color: var(--negro);
+    opacity: 0.9;
+  }
+
+  @media (max-width: 480px) {
+    #imagen-defecto { width: 200px; }
+  }
+</style>
+</head>
+
+<body>
+
+<h1>
+  <img src="https://i.postimg.cc/vmkyZHKc/pngtree-a-black-butterfly-silhouette-png-image-14849347.png" class="icono-mariposa" alt="Mariposa negra">
+  Encuentra tu Mesa
+  <img src="https://i.postimg.cc/vmkyZHKc/pngtree-a-black-butterfly-silhouette-png-image-14849347.png" class="icono-mariposa" alt="Mariposa negra">
+</h1>
+
+<p>Querido invitado, ¡qué alegría tenerte aquí! Escribe tu nombre y descubre la mesa donde celebrarás el quinceaños de:</p>
+
+<div class="nombre-quinceanera">Camila Artavia Abarca</div>
+
+<input type="text" id="buscador" placeholder="Escribe tu nombre aquí...">
+<button id="limpiar">Limpiar</button>
+
+<div id="sugerencias"></div>
+<div id="resultado">
+  <img id="imagen-defecto" src="https://i.postimg.cc/2SLB53ch/quinceanera.png" alt="Imagen de quinceañera">
+</div>
+
+<div id="footer">Con cariño, la quinceañera 💫</div>
+
+<script>
+const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ0mCK1aIfnoY3lAn9_KCRrX7-4SuooC7YjcWDZK0PJZ5oB09A6ULjvWw55tXhEkj5RCVh5h5bLaJgm/pub?output=csv';
+let datos = [];
+
+function normalizar(texto) {
+  return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+}
+
+fetch(sheetURL)
+  .then(res => res.text())
+  .then(csv => {
+    const filas = csv.split('\n').map(r => r.split(','));
+    const encabezados = filas[0].map(h => normalizar(h));
+    const nombreIdx = encabezados.indexOf('nombre');
+    const mesaIdx = encabezados.indexOf('mesa');
+
+    datos = filas.slice(1).map(fila => ({
+      nombre: fila[nombreIdx]?.trim(),
+      mesa: fila[mesaIdx]?.trim()
+    }));
+  });
+
+const buscador = document.getElementById('buscador');
+const sugerencias = document.getElementById('sugerencias');
+const resultado = document.getElementById('resultado');
+const limpiarBtn = document.getElementById('limpiar');
+
+buscador.addEventListener('input', e => {
+  const texto = normalizar(e.target.value);
+  sugerencias.innerHTML = '';
+  resultado.innerHTML = '<img id="imagen-defecto" src="https://i.postimg.cc/2SLB53ch/quinceanera.png" alt="Imagen de quinceañera">';
+
+  if (texto.length < 1) return;
+
+  const coincidencias = datos.filter(d => normalizar(d.nombre).includes(texto));
+
+  sugerencias.innerHTML = coincidencias.length
+    ? coincidencias.map(c => `<div class="opcion">${c.nombre}</div>`).join('')
+    : '<div class="opcion">No se encontró coincidencia 💭</div>';
+
+  document.querySelectorAll('.opcion').forEach((div, i) => {
+    div.onclick = () => {
+      buscador.value = coincidencias[i].nombre;
+      sugerencias.innerHTML = '';
+      mostrarTarjeta(coincidencias[i]);
+    };
+  });
+});
+
+function mostrarTarjeta(c) {
+  resultado.innerHTML = `
+    <div class="tarjeta-mesa">
+      <h2>MESA</h2>
+      <div class="numero">${c.mesa}</div>
+      <div class="mensaje">Gracias por acompañarme en<br><i>Mis&nbsp;Quince</i></div>
+      <div class="fecha">15 NOV 2025</div>
+    </div>
+  `;
+}
+
+limpiarBtn.addEventListener('click', () => {
+  buscador.value = '';
+  sugerencias.innerHTML = '';
+  resultado.innerHTML = '<img id="imagen-defecto" src="https://i.postimg.cc/2SLB53ch/quinceanera.png" alt="Imagen de quinceañera">';
+  buscador.focus();
+});
+</script>
+
+</body>
+</html>
